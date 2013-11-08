@@ -1,11 +1,29 @@
-.show {
-    z-index:1000;
+.custom-rmenu {
     position: absolute;
-    background-color:#C0C0C0;
-    border: 1px solid blue;
+    background-color: #fafafa;
+    border: 1px solid #dfdfdf;
     padding: 2px;
     display: block;
     margin: 0;
-    list-style-type: none;
-    list-style: none;
+    width: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.05);
+    z-index:1000000;
+}
+.custom-rmenu a {
+    display: block;
+}
+.custom-rmenu a:hover {
+    text-decoration: none;
+}
+.rmenu-item {
+    padding: 3px 3px;
+}
+.rmenu-item:hover {
+    border: 1px solid #fff;
+    padding: 2px 2px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.rmenu-item .col-sm-1 {
+    text-align: right;
 }

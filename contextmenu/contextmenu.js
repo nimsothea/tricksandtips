@@ -1,3 +1,4 @@
+var rmenuToggleContainer = '';
 $(document).ready(function() {
     if ($("#test").addEventListener) {
         $("#test").addEventListener('contextmenu', function(e) {
@@ -7,20 +8,23 @@ $(document).ready(function() {
     } else {
         //document.getElementById("test").attachEvent('oncontextmenu', function() {
         //$(".test").bind('contextmenu', function() {
-        $('body').on('contextmenu', 'a.test', function() {
-            //alert("contextmenu"+event);
-            document.getElementById("rmenu").className = "show";
-            document.getElementById("rmenu").style.top = mouseY(event);
-            document.getElementById("rmenu").style.left = mouseX(event);
+        $('body').on('contextmenu', 'a[data-rmenu="wcs-custom-rmenu"]', function() {
+            rmenuToggleContainer = $(this).attr('data-toggle');
+            $(rmenuToggleContainer).attr('class', 'custom-rmenu');
+            $(rmenuToggleContainer).css({top: mouseY(event)});
+            $(rmenuToggleContainer).css({left: mouseX(event)});
             window.event.returnValue = false;
         });
     }
     
     // this is from another SO post...  
     $(document).bind("click", function(event) {
-        document.getElementById("rmenu").className = "hide";
+        if (rmenuToggleContainer)
+        {
+            $(rmenuToggleContainer).attr('class', 'hide');
+            rmenuToggleContainer = '';
+        }
     });
-
 });
 
 function mouseX(evt)
